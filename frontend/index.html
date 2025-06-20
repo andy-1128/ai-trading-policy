@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Trading Reels</title>
+</head>
+<body>
+  <h1>Top Crypto Reels</h1>
+  <div id="content"></div>
+  <script>
+    fetch('../data/crypto_reels.json')
+      .then(response => response.json())
+      .then(data => {
+        let html = '';
+        data.forEach(item => {
+          html += `<div>
+                     <h2>${item.symbol} from @${item.influencer}</h2>
+                     <a href="${item.reel_url}" target="_blank">${item.reel_url}</a>
+                   </div>`;
+        });
+        document.getElementById('content').innerHTML = html;
+      });
+  </script>
+</body>
+</html>
